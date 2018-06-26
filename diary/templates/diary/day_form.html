@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block body %}
+	{% include "diary_nav.html" %}
+	<form action="", method="POST">
+		<table class="table">
+			<tr>
+				<th>タイトル</th>
+				<td>{{ form.title }}</td>
+			</tr>
+			<tr>
+				<th>内容</th>
+				<td>{{ form.text }}</td>
+			</tr>
+			<tr>
+				<th>日付</th>
+				<td>{{ form.date }}</td>
+			</tr>
+		</table>
+		<button class="btn btn-primary">送信</button>
+		{% csrf_token %}
+	</form>
+{% endblock %}

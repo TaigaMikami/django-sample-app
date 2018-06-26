@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block body %}
+	{% include "diary_nav.html" %}
+	<h1>日記帳アプリケーションです</h1>
+	<h2>日記一覧</h2>
+	<table class="table">
+	<thead>
+	<tr>
+		<th>タイトル</th>
+		<th>日付</th>
+	</tr>
+	</thead>
+	<tbody>
+	{% for day in day_list %}
+		<tr>
+		<td>{{ day.title }}</td>
+		<td>{{ day.date }}</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+	</table>
+
+{% endblock %}
