@@ -6,3 +6,5 @@ class Day(models.Model):
   text = models.TextField('本文')
   date = models.DateTimeField('日付', default=timezone.now)
 
+  def __str__(self):
+    return self.title
