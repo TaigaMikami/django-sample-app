@@ -20,8 +20,8 @@
 		<td>{{ day.date }}</td>
 		<td><a href="{% url 'diary:detail' day.pk %}">詳細</a></td>
 			{% if user.is_superuser %}
-			<td><a href="{% url 'admin:diary_day_change' day.pk %}">更新</a></td>
-			<td><a href="{% url 'admin:diary_day_delete' day.pk %}">削除</a></td>
+			<td><a href="{% url 'diary:update' day.pk %}">更新</a></td>
+			<td><a href="{% url 'diary:delete' day.pk %}">削除</a></td>
 			{% endif %}
 		</tr>
 	{% endfor %}

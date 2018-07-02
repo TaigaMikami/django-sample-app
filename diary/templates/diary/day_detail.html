@@ -16,5 +16,7 @@
 				<td>{{ day.date }}</td>
 			</tr>
 		</table>
+		{% if user.is_superuser %}
 		<td><a href="{% url 'diary:update' day.pk %}">更新</a></td>
+		{% endif %}
 {% endblock %}
