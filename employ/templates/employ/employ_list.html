@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block body %}
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample3">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">
+					タイトル
+				</a>
+			</div>
+
+			<div class="collapse navbar-collapse" id="navbarEexample3">
+				<ul class="nav navbar-nav">
+					<li><a href="{% url 'employ:index' %}">一覧</a></li>
+					{% if user.is_superuser %}
+					<li><a href="{% url 'admin:employ_employee_add' %}">社員追加</a></li>
+					{% endif %}
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<h2>社員管理システム</h2>
+
+	<form action="" method="GET">
+		{{ form }}
+	<button type="submit">検索</button>
+	</form>
+	<table class="table">
+		<thead>
+		<tr>
+			<th>ID</th>
+			<th>姓</th>
+			<th>名</th>
+			<th>メール</th>
+			<th>部署</th>
+			<th>部活</th>
+		</tr>
+		</thead>
+		<tbody>
+		{% for employee in employee_list %}
+			<tr>
+				<td>{{ employee.pk }}</td>
+				<td>{{ employee.last_name }}</td>
+				<td>{{ employee.first_name }}</td>
+				<td>{{ employee.email }}</td>
+				<td>{{ employee.department }}</td>
+				<td>{% for club in employee.club.all %}{{ club.name }}{% endfor %}</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+	{% include 'employ/page4.html' %}
+
+{% endblock %}
